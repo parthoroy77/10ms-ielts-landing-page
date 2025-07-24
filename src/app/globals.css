@@ -120,3 +120,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+  visibility: hidden;
+  width: 0;
+}

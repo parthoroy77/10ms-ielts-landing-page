@@ -1,3 +1,5 @@
+import Header from "@/components/header";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -24,9 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={cn(geistSans.variable, geistMono.variable, "antialiased", "scrollbar-hidden")}>
+        <Header />
         {children}
       </body>
     </html>
