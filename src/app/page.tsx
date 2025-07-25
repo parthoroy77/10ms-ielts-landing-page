@@ -5,6 +5,7 @@ import CourseFeatures from "@/components/course-features";
 import CourseInstructor from "@/components/course-instructor";
 import CoursePointers from "@/components/course-pointers";
 import CTASection from "@/components/cta-section";
+import FAQ from "@/components/faq";
 import HeroSection from "@/components/hero-section";
 import ProductTrailer from "@/components/product-trailer";
 import { Container } from "@/components/ui/container";
@@ -20,6 +21,7 @@ export default async function Home() {
   const pointers = getSectionByType(data.sections, "pointers");
   const exclusiveFeatures = getSectionByType(data.sections, "feature_explanations");
   const courseDetails = getSectionByType(data.sections, "about");
+  const faq = getSectionByType(data.sections, "faq");
 
   return (
     <div className="mb-20 flex min-h-dvh flex-col space-y-5">
@@ -31,6 +33,7 @@ export default async function Home() {
           {pointers && <CoursePointers pointers={pointers} />}
           {exclusiveFeatures && <CourseExclusiveFeatures exclusiveFeatures={exclusiveFeatures} />}
           {courseDetails && <CourseDetails details={courseDetails} />}
+          {faq && <FAQ faq={faq} />}
         </div>
         <aside className="top-14 h-screen space-y-10 *:space-y-3 md:sticky md:w-2/6 md:space-y-5 *:md:border *:md:p-4">
           <ProductTrailer media={data.media} />
