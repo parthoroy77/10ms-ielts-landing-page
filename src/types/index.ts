@@ -175,6 +175,5 @@ export interface Data {
   cta_text: CtaText;
   sections: Section[];
   is_cohort_based_course: boolean;
-  secondary_cta_group: any[];
   delivery_method: string;
 }

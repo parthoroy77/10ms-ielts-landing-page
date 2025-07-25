@@ -9,7 +9,7 @@ const CourseExclusiveFeatures = ({ exclusiveFeatures }: Props) => {
   return (
     <div>
       <h2>{exclusiveFeatures.name}</h2>
-      <div className="divide-y rounded-md border *:p-6">
+      <div className="divide-y rounded-md border *:p-5">
         {(exclusiveFeatures.values as FeatureExplanationValue[]).map((f) => (
           <div key={f.id} className="flex gap-5">
             <div className="flex-1 space-y-3">
