@@ -1,4 +1,5 @@
 import CheckLists from "@/components/checklists";
+import CourseDetails from "@/components/course-details";
 import CourseExclusiveFeatures from "@/components/course-exclusive-features";
 import CourseFeatures from "@/components/course-features";
 import CourseInstructor from "@/components/course-instructor";
@@ -15,6 +16,7 @@ export default async function Home() {
   const features = data.sections.find((s) => s.type === "features");
   const pointers = data.sections.find((s) => s.type === "pointers");
   const exclusiveFeatures = data.sections.find((s) => s.type === "feature_explanations");
+  const courseDetails = data.sections.find((s) => s.type === "about");
   return (
     <div className="mx-auto mb-20 flex min-h-dvh flex-col space-y-5">
       <HeroSection title={data.title} description={data.description} />
@@ -24,6 +26,7 @@ export default async function Home() {
           {features && <CourseFeatures features={features} />}
           {pointers && <CoursePointers pointers={pointers} />}
           {exclusiveFeatures && <CourseExclusiveFeatures exclusiveFeatures={exclusiveFeatures} />}
+          {courseDetails && <CourseDetails details={courseDetails} />}
         </div>
         <aside className="w-2/6 space-y-5">
           <ProductTrailer media={data.media} />
