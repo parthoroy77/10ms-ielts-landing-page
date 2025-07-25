@@ -10,16 +10,19 @@ const CourseDetails = ({ details }: Props) => {
       <Accordion
         type="single"
         collapsible
-        className="rounded-md border px-4"
+        className="rounded-md md:border md:px-4"
         defaultValue={(details.values as AboutValue[])[0].id}
       >
         {(details.values as AboutValue[]).map((item) => (
           <AccordionItem key={item.id} value={item.id}>
-            <AccordionTrigger className="mx-lg:text-sm font-medium hover:no-underline [&_b]:font-semibold [&_h2]:!text-lg">
+            <AccordionTrigger className="[&_h2]:!md:text-lg font-medium hover:no-underline [&_b]:font-semibold [&_h2]:!text-sm">
               <div dangerouslySetInnerHTML={{ __html: item.title }} />
             </AccordionTrigger>
             <AccordionContent>
-              <div dangerouslySetInnerHTML={{ __html: item.description }} className="space-y-2 text-base" />
+              <div
+                dangerouslySetInnerHTML={{ __html: item.description }}
+                className="space-y-2 text-sm font-medium text-neutral-800 md:text-base"
+              />
             </AccordionContent>
           </AccordionItem>
         ))}

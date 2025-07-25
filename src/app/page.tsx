@@ -24,15 +24,15 @@ export default async function Home() {
   return (
     <div className="mb-20 flex min-h-dvh flex-col space-y-5">
       <HeroSection title={data.title} description={data.description} />
-      <Container className="relative flex h-full gap-16 *:h-full">
-        <div className="flex-1 space-y-10 *:space-y-5 [&_h2]:text-2xl [&_h2]:font-semibold">
+      <Container className="relative flex h-full flex-col-reverse gap-16 *:h-full md:flex-row">
+        <div className="flex-1 space-y-10 *:space-y-5 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:md:text-2xl">
           {instructor && <CourseInstructor instructor={instructor} />}
           {features && <CourseFeatures features={features} />}
           {pointers && <CoursePointers pointers={pointers} />}
           {exclusiveFeatures && <CourseExclusiveFeatures exclusiveFeatures={exclusiveFeatures} />}
           {courseDetails && <CourseDetails details={courseDetails} />}
         </div>
-        <aside className="sticky top-14 h-screen w-2/6 space-y-5">
+        <aside className="top-14 h-screen space-y-10 *:space-y-3 md:sticky md:w-2/6 md:space-y-5 *:md:border *:md:p-4">
           <ProductTrailer media={data.media} />
           <CTASection cta={data.cta_text} />
           <CheckLists checklists={data.checklist} />

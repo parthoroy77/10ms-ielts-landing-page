@@ -6,7 +6,7 @@ interface Props {
 }
 const CheckLists = ({ checklists }: Props) => {
   return (
-    <div className="space-y-3 border p-4">
+    <div>
       {checklists.map((el) => (
         <div key={el.id} className="flex items-center gap-4" style={{ color: el.color }}>
           <Image src={el.icon} width={20} height={20} alt={el.text + "Icon"} />

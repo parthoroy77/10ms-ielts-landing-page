@@ -8,7 +8,7 @@ const CourseFeatures = ({ features }: Props) => {
   return (
     <div>
       <h2>{features.name}</h2>
-      <div className="text-background grid grid-cols-2 gap-8 rounded-md bg-[#06011f] p-8">
+      <div className="text-background grid gap-8 rounded-md bg-[#06011f] p-8 md:grid-cols-2">
         {(features.values as FeatureValue[]).map((feature) => (
           <div key={feature.id} className="flex items-start gap-5">
             <Image
@@ -19,7 +19,7 @@ const CourseFeatures = ({ features }: Props) => {
               className="mt-1 aspect-square size-10"
             />
             <div className="space-y-1">
-              <h3 className="text-xl font-semibold">{feature.title}</h3>
+              <h3 className="text-base font-semibold md:text-xl">{feature.title}</h3>
               <p className="text-sm font-medium text-neutral-400">{feature.subtitle}</p>
             </div>
           </div>

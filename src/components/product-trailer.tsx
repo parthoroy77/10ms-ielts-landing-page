@@ -45,7 +45,7 @@ const ProductTrailer = ({ media }: Props) => {
   }, [currentIndex]);
 
   return (
-    <div className="space-y-2 border p-2">
+    <div className="md:!p-2">
       {/* Main Preview */}
       <div className="relative aspect-video h-[250px] w-full overflow-hidden rounded-md border [&_button]:cursor-pointer">
         {/* Media preview or video player */}
