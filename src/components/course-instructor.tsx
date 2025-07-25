@@ -8,7 +8,7 @@ interface Props {
 const CourseInstructor = ({ instructor }: Props) => {
   return (
     <div>
-      <h2 className="text-2xl font-semibold">{instructor.name}</h2>
+      <h2>{instructor.name}</h2>
       {(instructor.values as InstructorValue[]).map((item, i) => (
         <div key={i} className="flex items-start gap-5 rounded-md border p-4 shadow-sm">
           <Image width={86} height={86} className="mt-1 rounded-full" src={item.image} alt={item.name} />
