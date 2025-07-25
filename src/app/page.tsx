@@ -1,18 +1,20 @@
 import CheckLists from "@/components/checklists";
+import CourseExclusiveFeatures from "@/components/course-exclusive-features";
 import CourseFeatures from "@/components/course-features";
 import CourseInstructor from "@/components/course-instructor";
+import CoursePointers from "@/components/course-pointers";
 import CTASection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";
 import ProductTrailer from "@/components/product-trailer";
 import { Container } from "@/components/ui/container";
 import { getData } from "./actions";
-import CoursePointers from "@/components/course-pointers";
 
 export default async function Home() {
   const data = await getData();
   const instructor = data.sections.find((s) => s.type === "instructors");
   const features = data.sections.find((s) => s.type === "features");
   const pointers = data.sections.find((s) => s.type === "pointers");
+  const exclusiveFeatures = data.sections.find((s) => s.type === "feature_explanations");
   return (
     <div className="mx-auto mb-20 flex min-h-dvh flex-col space-y-5">
       <HeroSection title={data.title} description={data.description} />
@@ -21,6 +23,7 @@ export default async function Home() {
           {instructor && <CourseInstructor instructor={instructor} />}
           {features && <CourseFeatures features={features} />}
           {pointers && <CoursePointers pointers={pointers} />}
+          {exclusiveFeatures && <CourseExclusiveFeatures exclusiveFeatures={exclusiveFeatures} />}
         </div>
         <aside className="w-2/6 space-y-5">
           <ProductTrailer media={data.media} />
