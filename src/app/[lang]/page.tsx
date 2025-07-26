@@ -10,10 +10,21 @@ import HeroSection from "@/components/hero-section";
 import ProductTrailer from "@/components/product-trailer";
 import { Container } from "@/components/ui/container";
 import { getSectionByType } from "@/lib/utils";
-import { getData } from "./actions";
+import { getData } from "../actions";
 
-export default async function Home() {
-  const data = await getData({ lang: "bn" });
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return [{ lang: "bn" }, { lang: "en" }];
+}
+
+type Props = {
+  params: Promise<{ lang: "bn" | "en" }>;
+};
+
+export default async function Home({ params }: Props) {
+  const lang = (await params).lang;
+  const data = await getData({ lang });
 
   // Sections
   const instructor = getSectionByType(data.sections, "instructors");

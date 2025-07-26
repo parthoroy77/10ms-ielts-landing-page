@@ -3,13 +3,14 @@
 import { Data } from "@/types";
 
 export const getData = async (params?: { lang: "en" | "bn" }) => {
-  let url =
+  const url =
     "https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course" + `?lang=${params?.lang || "en"}`;
   try {
     const response = await fetch(url, {
       method: "GET",
       headers: {
         "X-TENMS-SOURCE-PLATFORM": "web",
+        Accept: "application/json",
       },
     });
 
