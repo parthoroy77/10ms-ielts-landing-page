@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
         pathname: "/cdn.10minuteschool.com/images/**",
       },
     ],
+    unoptimized: true,
+    loader: "default",
   },
 };
 
