@@ -11,5 +11,5 @@ export const getSectionByType = <T extends Section["type"]>(
   sections: Section[],
   type: T
 ): (Section & { type: T }) | undefined => {
-  return sections.find((s): s is Extract<Section, { type: T }> => s.type === type);
+  return sections?.find((s): s is Extract<Section, { type: T }> => s.type === type);
 };

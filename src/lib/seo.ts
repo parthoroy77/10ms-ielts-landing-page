@@ -1,7 +1,7 @@
 import { Seo, SeoMeta } from "@/types";
 
 const extractMetadata = (data: Seo, value: string, type: SeoMeta["type"] = "property"): string => {
-  return data.defaultMeta.find((d) => d.value === value && d.type === type)?.content || "";
+  return data.defaultMeta?.find((d) => d.value === value && d.type === type)?.content || "";
 };
 
 export const generateOpenGraphMeta = (seo: Seo) => {

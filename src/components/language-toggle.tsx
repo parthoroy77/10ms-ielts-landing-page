@@ -17,7 +17,7 @@ const LanguageToggle = () => {
 
   return (
     <div>
-      <Button variant="outline" onClick={handleToggle}>
+      <Button variant="outline" className="cursor-pointer" onClick={handleToggle}>
         <Languages size={16} />
         {isBangla ? "EN" : "বাং"}
       </Button>

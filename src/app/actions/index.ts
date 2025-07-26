@@ -1,5 +1,4 @@
 "use server";
-
 import { Data } from "@/types";
 
 export const getData = async (params?: { lang: "en" | "bn" }) => {
@@ -13,6 +12,10 @@ export const getData = async (params?: { lang: "en" | "bn" }) => {
         Accept: "application/json",
       },
     });
+
+    if (!response.ok) {
+      throw Error("HTTP request error");
+    }
 
     const result = await response.json();
     return result.data as Data;
