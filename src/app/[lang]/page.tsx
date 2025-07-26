@@ -1,16 +1,13 @@
-import CheckLists from "@/components/checklists";
-import CourseDetails from "@/components/course-details";
-import CourseExclusiveFeatures from "@/components/course-exclusive-features";
-import CourseFeatures from "@/components/course-features";
-import CourseInstructor from "@/components/course-instructor";
-import CoursePointers from "@/components/course-pointers";
-import CTASection from "@/components/cta-section";
-import FAQ from "@/components/faq";
+import CourseContainer from "@/components/course-container";
 import HeroSection from "@/components/hero-section";
-import ProductTrailer from "@/components/product-trailer";
-import { Container } from "@/components/ui/container";
-import { getSectionByType } from "@/lib/utils";
+import StructureLdJSON from "@/components/structure-ld-json";
+import { generateOpenGraphMeta } from "@/lib/seo";
+import { Metadata, ResolvingMetadata } from "next";
 import { getData } from "../actions";
+
+type Props = {
+  params: Promise<{ lang: "bn" | "en" }>;
+};
 
 export const revalidate = 60;
 
@@ -18,40 +15,39 @@ export async function generateStaticParams() {
   return [{ lang: "bn" }, { lang: "en" }];
 }
 
-type Props = {
-  params: Promise<{ lang: "bn" | "en" }>;
-};
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const lang = (await params).lang;
+  const { seo } = await getData({ lang });
+  const openGraph = generateOpenGraphMeta(seo);
+  const parentMetaData = await parent;
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+
+    openGraph: {
+      ...parentMetaData.openGraph,
+      ...openGraph,
+      images: [...openGraph.images, ...(parentMetaData.openGraph?.images || [])],
+      locale: lang === "bn" ? "bn_BD" : "en_US",
+    },
+  };
+}
 
 export default async function Home({ params }: Props) {
   const lang = (await params).lang;
   const data = await getData({ lang });
 
-  // Sections
-  const instructor = getSectionByType(data.sections, "instructors");
-  const features = getSectionByType(data.sections, "features");
-  const pointers = getSectionByType(data.sections, "pointers");
-  const exclusiveFeatures = getSectionByType(data.sections, "feature_explanations");
-  const courseDetails = getSectionByType(data.sections, "about");
-  const faq = getSectionByType(data.sections, "faq");
-
   return (
-    <div className="mb-20 flex min-h-dvh flex-col space-y-5">
-      <HeroSection title={data.title} description={data.description} />
-      <Container className="relative flex h-full flex-col-reverse gap-16 *:h-full md:flex-row">
-        <div className="flex-1 space-y-10 *:space-y-5 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:md:text-2xl">
-          {instructor && <CourseInstructor instructor={instructor} />}
-          {features && <CourseFeatures features={features} />}
-          {pointers && <CoursePointers pointers={pointers} />}
-          {exclusiveFeatures && <CourseExclusiveFeatures exclusiveFeatures={exclusiveFeatures} />}
-          {courseDetails && <CourseDetails details={courseDetails} />}
-          {faq && <FAQ faq={faq} />}
-        </div>
-        <aside className="top-14 h-screen space-y-10 *:space-y-3 md:sticky md:w-2/6 md:space-y-5 *:md:border *:md:p-4">
-          <ProductTrailer media={data.media} />
-          <CTASection cta={data.cta_text} />
-          <CheckLists checklists={data.checklist} />
-        </aside>
-      </Container>
-    </div>
+    <>
+      <main className="mb-20 flex min-h-dvh flex-col space-y-5">
+        <HeroSection title={data.title} description={data.description} />
+        <CourseContainer data={data} />
+      </main>
+
+      {/* Seo Item */}
+      <StructureLdJSON seo={data.seo} />
+    </>
   );
 }
