@@ -2,8 +2,10 @@
 import { Data } from "@/types";
 
 export const getData = async (params?: { lang: "en" | "bn" }) => {
-  const url =
-    "https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course" + `?lang=${params?.lang || "en"}`;
+  const lang = params?.lang || "bn";
+
+  const url = "https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course" + `?lang=${lang}`;
+
   try {
     const response = await fetch(url, {
       method: "GET",
@@ -13,6 +15,7 @@ export const getData = async (params?: { lang: "en" | "bn" }) => {
       },
       next: {
         revalidate: 60,
+        tags: [lang],
       },
     });
 
