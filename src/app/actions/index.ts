@@ -11,6 +11,9 @@ export const getData = async (params?: { lang: "en" | "bn" }) => {
         "X-TENMS-SOURCE-PLATFORM": "web",
         Accept: "application/json",
       },
+      next: {
+        revalidate: 60,
+      },
     });
 
     if (!response.ok) {

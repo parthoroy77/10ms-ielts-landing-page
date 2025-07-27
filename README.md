@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Assessment – 10MS IELTS Course Product Page
 
-## Getting Started
+Thank you for the opportunity to work on this assessment! I’ve thoroughly enjoyed building the product page with all the required features and enhancements.
 
-First, run the development server:
+## Features
+
+- [✔] - Incremental Static Regeneration (ISR) **Revalidates in every minute**
+- [✔] - Server-Side Rendering (SSR)
+- [✔] - **Localization** with language query param
+- [✔] - SEO Metadata
+- [✔] - Course Introduction (Title & Description)
+- [✔] - Product Trailer **Including youtube player**
+- [✔] - Course Instructor information
+- [✔] - CTA Section
+- [✔] - How the course is laid out
+- [✔] - What you will learn by doing the course
+- [✔] - Course Exclusive Feature
+- [✔] - Course Details
+- [✔] - Checklist
+- [✔] - FAQ Section
+- [✔] - Dockerfile
+
+---
+
+### # Prerequisites
+
+- Node.js 18+
+- `pnpm`, `npm`, or `yarn` (any package manager will work)
+- Docker (Optiona for containerized setup)
+
+---
+
+### Installation
+
+### ⚙️ Option 1: Manual Setup (using npm/pnpm)
+
+1. **Install dependencies**
+
+   ```bash
+   npm install
+
+   # Or
+
+   pnpm install
+   ```
+
+2. **Create Production Build**
+
+   ```bash
+   npm run build
+
+   # Or
+
+   pnpm build
+   ```
+
+3. **Start server**
+
+   ```bash
+   npm start
+
+   # Or
+
+   pnpm start
+   ```
+
+---
+
+### 🚀 Option 2: Run with Docker Compose (Build version)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up
+# Or
+docker compose up --build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Partho Roy
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Portfolio](https://parthoroy.com/) [https://parthoroy.com/]
