@@ -9,8 +9,6 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const revalidate = 60;
-
 export const metadata: Metadata = {
   applicationName: "10 Minute School",
   authors: [{ name: "10 Minute School" }],

@@ -56,12 +56,12 @@ const ProductTrailer = ({ media }: Props) => {
             src={
               currentMedia.resource_type === "image"
                 ? currentMedia.resource_value
-                : ((currentMedia.thumbnail_url as string) ?? "/placeholder-image.png")
+                : (currentMedia.thumbnail_url as string)
             }
-            width={1920}
-            height={1280}
             alt={currentMedia.name}
             className="size-full object-cover"
+            fill
+            priority
           />
         )}
 

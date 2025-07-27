@@ -33,7 +33,7 @@ const CourseContainer = ({ data }: Props) => {
         {courseDetails && <CourseDetails details={courseDetails} />}
         {faq && <FAQ faq={faq} />}
       </div>
-      <aside className="top-14 h-screen space-y-10 *:space-y-3 md:sticky md:w-2/6 md:space-y-5 *:md:border *:md:p-4">
+      <aside className="top-14 h-screen space-y-10 bg-white *:space-y-3 md:sticky md:-mt-[200px] md:w-2/6 md:space-y-5 md:rounded-md md:border *:md:p-4">
         <ProductTrailer media={data.media} />
         <CTASection cta={data.cta_text} />
         <CheckLists checklists={data.checklist} />
